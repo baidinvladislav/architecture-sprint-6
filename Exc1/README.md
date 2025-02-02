@@ -24,4 +24,4 @@
 ![img.png](as-is.png)
 
 ### Схема итогового решения
-![img.png](as-to-be.png)
+![img.png](InureTech_технологическая архитектура_to be.png)
