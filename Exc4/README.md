@@ -41,4 +41,3 @@
 ![insure_tech_tech_arch_as_is.drawio.png](insure_tech_tech_arch_as_is.drawio.png)
 
 ### Диаграмма компонентов системы to-be:
-![insure_tech_tech_arch_to_be.drawio.png](insure_tech_tech_arch_to_be.drawio.png)
