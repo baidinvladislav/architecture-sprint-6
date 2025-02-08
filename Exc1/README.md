@@ -21,7 +21,8 @@
 
 Вот схема текущей архитектуры в draw.io:
 
+### Изначальная схема:
 ![img.png](as-is.png)
 
 ### Схема итогового решения:
-![img.png](insure_tech_tech_arch_to_be.png)
+![insure_tech_tech_arch_to_be.drawio.png](insure_tech_tech_arch_to_be.drawio.png)
