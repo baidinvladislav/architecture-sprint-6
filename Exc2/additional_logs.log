@@ -1,0 +1,4 @@
+(venv) baydinvlad@Vlads-MBP Exc2 % kubectl get hpa -w
+NAME               REFERENCE                            TARGETS                          MINPODS   MAXPODS   REPLICAS   AGE
+scaletestapp-hpa   Deployment/scaletestapp-deployment   memory: 54%/80%, <unknown>/100   1         10        2          149m
+scaletestapp-hpa   Deployment/scaletestapp-deployment   memory: 53%/80%, <unknown>/100   1         10        2          149m
