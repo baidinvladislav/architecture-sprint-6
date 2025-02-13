@@ -124,3 +124,75 @@
 Когда будете сдавать решение, загрузите схему в директорию Exc5 в рамках пул-реквеста.
 
 Проанализируйте получившееся решение и подумайте, как GraphQL помогает оптимизировать взаимодействие между потребителями и client-info. Описывать свои выводы в решении не нужно, это упражнение полезно выполнить для себя.
+
+### Решение:
+В существующем REST API есть три основных ресурса:
+* Client (/clients/{id}) — основная сущность, содержит базовую информацию о клиенте.
+* Document (/clients/{id}/documents) — список документов клиента.
+* Relative (/clients/{id}/relatives) — список родственников клиента.
+
+В GraphQL мы можем выразить эти сущности, как:
+```
+type Query {
+  client(id: ID!): Client
+}
+
+type Client {
+  id: ID!
+  name: String!
+  age: Int!
+  documents: [Document]
+  relatives: [Relative]
+}
+
+type Document {
+  id: ID!
+  type: String!
+  number: String!
+  issueDate: String!
+  expiryDate: String!
+}
+
+type Relative {
+  id: ID!
+  relationType: String!
+  name: String!
+  age: Int!
+}
+```
+
+### Примеры исользования:
+REST API:
+Допустим нам нужно получить информацию по клиенту, по его родственникам, а также по его документам:
+мы сделаем 3 запроса на разные ручки:
+1. /clients/{id} - забираем данные по клиенту: (id, name, age)
+2. /clients/{id}/documents - забираем данные по документам: (id, type, number, issueDate, expiryDate) 
+3. /clients/{id}/relatives - забираем данные по родственникам: (id, relationType, name, age) 
+
+GraphQL:
+В случае с GraphQL мы можем забрать данные по трём сущностям за один запрос:
+```
+query {
+  client(id: "123") {
+    id
+    name
+    age
+    documents {
+      id
+      type
+      number
+      issueDate
+      expiryDate
+    }
+    relatives {
+      id
+      name
+      relationType
+      age
+    }
+  }
+}
+```
+
+Также, преимущество в гибкости: при необходимости мы можем убрать из запроса любую сущность или конкретное поле, 
+получая только нужные данные и экономя трафик и вычислительные ресурсы сервера.
